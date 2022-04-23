@@ -1,53 +1,85 @@
 #pragma once
 #include <iostream>
 using namespace std;
-
 class Buyer
 {
+
+public:
+	string LastName;
+	short YearOfBirth;
+	int TelephoneNumber;
+	string Address;
+	int AccountNumber;
+	enum ValueName
+	{
+		LastNameEnum = 1,
+		YearOfBirthEnum = 2,
+		TelephoneNumberEnum = 3,
+		AddressEnum = 4,
+		AccountNumberEnum = 5
+
+	};
+
+	Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address, int accountNumber) {
+
+
+		LastName = lastName;
+		YearOfBirth = yearOfBirth;
+		TelephoneNumber = telephoneNumber;
+		Address = address;
+		AccountNumber = accountNumber;
+	}
+	Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address) {
+
+
+		LastName = lastName;
+		YearOfBirth = yearOfBirth;
+		TelephoneNumber = telephoneNumber;
+		Address = address;
+		AccountNumber = 0;
+
+	}
+	Buyer(string lastName, short yearOfBirth, int telephoneNumber) {
+
+
+		LastName = lastName;
+		YearOfBirth = yearOfBirth;
+		TelephoneNumber = telephoneNumber;
+		Address = "";
+		AccountNumber = 0;
+	}
+	Buyer(string lastName, short yearOfBirth) {
+
+
+		LastName = lastName;
+		YearOfBirth = yearOfBirth;
+		TelephoneNumber = 0;
+		Address = "";
+		AccountNumber = 0;
+	}
+	Buyer(string lastName) {
+
+
+		LastName = lastName;
+		YearOfBirth = 0;
+		TelephoneNumber = 0;
+		Address = "";
+		AccountNumber = 0;
+		cout << LastName;
+
+	}
+	Buyer() {
+		LastName = "0";
+		YearOfBirth = 0;
+		TelephoneNumber = 0;
+		Address = "0";
+		AccountNumber = 0;
+	}
+	~Buyer() {
+		cout << "-";
+	}
 	
-	public:
-		string LastName;
-		short YearOfBirth;
-		int TelephoneNumber;
-		string Address;
-		int AccountNumber;
-		Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address, int accountNumber) {
 
-
-			string LastName = lastName;
-			short YearOfBirth = yearOfBirth;
-			int TelephoneNumber = telephoneNumber;
-			string Address = address;
-			int AccountNumber = accountNumber;
-		}
-		Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address) {
-
-
-			string LastName = lastName;
-			short YearOfBirth = yearOfBirth;
-			int TelephoneNumber = telephoneNumber;
-			string Address = address;
-		}
-		Buyer(string lastName, short yearOfBirth, int telephoneNumber) {
-
-
-			string LastName = lastName;
-			short YearOfBirth = yearOfBirth;
-			int TelephoneNumber = telephoneNumber;
-		}
-		Buyer(string lastName, short yearOfBirth) {
-
-
-			string LastName = lastName;
-			short YearOfBirth = yearOfBirth;
-		}
-		Buyer(string lastName) {
-
-
-			string LastName = lastName;
-			cout << LastName;
-
-		}
-	
 };
+
 

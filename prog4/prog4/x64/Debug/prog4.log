@@ -1,0 +1,5 @@
+﻿  prog4.cpp
+C:\Users\федор\Desktop\программирование и проекты\Git\prog4\prog4\prog4\prog4.cpp(31,68): warning C4305: аргумент: усечение из "__int64" в "int"
+C:\Users\федор\Desktop\программирование и проекты\Git\prog4\prog4\prog4\prog4.cpp(31,40): warning C4309: аргумент: усечение константного значения
+C:\Users\федор\Desktop\программирование и проекты\Git\prog4\prog4\prog4\prog4.cpp(221): warning C4715: findElement: значение возвращается не при всех путях выполнения
+  prog4.vcxproj -> C:\Users\федор\Desktop\программирование и проекты\Git\prog4\prog4\x64\Debug\prog4.exe
