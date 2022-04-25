@@ -20,25 +20,105 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     // инициализация 
-    int count = 2;
+    int count = 0;
 
     Buyer** buyers;
     
     initializationArray(buyers, count);
 
     // основная часть 
-    writeFile(buyers, count);
-    Buyer newB("Лягушин", 2003, 89511656319, "улица", 1);
 
-    addItem(buyers, newB, count);
-    int item = findElement(buyers, buyers[0]->LastNameEnum, "Лягушин", count);
-    if (item != -1) {
-        cout << buyers[item]->LastName;
+    string valueForSearch, temporary;
+    int numb, b, item;
+    Buyer newBuyer;
+    bool exit = true;
+    while (exit)
+    {
+        cout << "Что хотите сделать?" << endl
+            << "1. Загрузить из файла" << endl
+            << "2. Сохранить в файл" << endl
+            << "3. Добавить элемент" << endl
+            << "4. Удалить элемент" << endl
+            << "5. Найти элемнт" << endl
+            << "6. Вывести" << endl
+            << "7. выход" << endl
+
+            << "Введите число:" << endl;
+        int a;
+        cin >> a;
+        system("cls");
+
+        switch (a)
+        {
+        case 1:
+            readFile(buyers, count);
+            cout << "Загрузка завершена" << endl;
+            break;
+        case 2:
+            writeFile(buyers, count);
+            cout << "Сохранено" << endl;
+            break;
+        case 3:
+            cout << "введите фамилию: ";
+            cin >> newBuyer.LastName;
+            cout << "введите год рождения: ";
+            cin >> newBuyer.YearOfBirth;
+            cout << "введите номер телефона: ";
+            cin >> newBuyer.TelephoneNumber;
+            cout << "введите адрес: ";
+            cin >> newBuyer.Address;
+            cout << "введите  номер счета:";
+            cin >> newBuyer.AccountNumber;
+            addItem(buyers, newBuyer, count);
+            cout << "элемент добавлен" << endl;
+            break;
+        case 4:
+            if (count > 0)
+            {
+                cout << "Введите номер элемента, который нужно удалить:";
+                cin >> numb;
+                deleteItem(buyers, numb, count);
+                cout << "элемент удален" << endl;
+            }
+            else
+            {
+                cout << "Массив пустой, удалять нечего" << endl;
+            }
+            break;
+        case 5:
+            cout << "по какому полю искать" << endl;
+            cout << "1. Фамилия" << endl;
+            cout << "2. год рождения" << endl;
+            cout << "3. Телефонный номер" << endl;
+            cout << "4. Адресс" << endl;
+            cout << "5. Номер счета" << endl;
+            cout << "ваш выбор:" << endl;
+            cin >> b;
+            cout << "занчение поля:" << endl;
+            cin >> valueForSearch;
+            item = findElement(buyers, b , valueForSearch, count);
+            if (item != -1)
+            {
+                cout << buyers[item]->LastName << endl
+                    << buyers[item]->YearOfBirth << endl
+                    << buyers[item]->TelephoneNumber << endl
+                    << buyers[item]->Address << endl
+                    << buyers[item]->AccountNumber << endl;
+            }
+            break;
+        case 6:
+            writeInConsole(buyers, count);
+            break;
+        case 7:
+            exit = false;
+            break;
+        default:
+            cout << "Число введено неверно, введите еще раз";
+            break;
+        }
+        
+
     }
-    writeInConsole(buyers, count);
-
-
-
     // удаление 
     for (int i = 0; i < count; i++)
     {
@@ -164,11 +244,11 @@ int findElement(Buyer**& b, int type, string findValue, int count ) {
 
     case b[0]->TelephoneNumberEnum:
 
-        
+        long long convertValueL;
 
         try
         {
-            convertValueI = stoi(findValue);
+            convertValueL = stoll(findValue);
         }
         catch (const std::exception& e)
         {
@@ -177,7 +257,7 @@ int findElement(Buyer**& b, int type, string findValue, int count ) {
         }
 
         for (int i = 0; i < count; i++)
-            if (b[i]->TelephoneNumber == convertValueI)
+            if (b[i]->TelephoneNumber == convertValueL)
                 return i;
         return -1;
         break;
@@ -212,19 +292,6 @@ int findElement(Buyer**& b, int type, string findValue, int count ) {
     default:
         break;
     }
-    /*LastNameEnum = 1,
-        YearOfBirthEnum = 2,
-        TelephoneNumberEnum = 3,
-        AddressEnum = 4,
-        AccountNumberEnum = 5*/
+    
 }
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.

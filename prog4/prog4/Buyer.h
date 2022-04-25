@@ -7,7 +7,7 @@ class Buyer
 public:
 	string LastName;
 	short YearOfBirth;
-	int TelephoneNumber;
+	long long TelephoneNumber;
 	string Address;
 	int AccountNumber;
 	enum ValueName
@@ -20,7 +20,7 @@ public:
 
 	};
 
-	Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address, int accountNumber) {
+	Buyer(string lastName, short yearOfBirth, long long telephoneNumber, string address, int accountNumber) {
 
 
 		LastName = lastName;
@@ -29,7 +29,7 @@ public:
 		Address = address;
 		AccountNumber = accountNumber;
 	}
-	Buyer(string lastName, short yearOfBirth, int telephoneNumber, string address) {
+	Buyer(string lastName, short yearOfBirth, long long telephoneNumber, string address) {
 
 
 		LastName = lastName;
@@ -39,7 +39,7 @@ public:
 		AccountNumber = 0;
 
 	}
-	Buyer(string lastName, short yearOfBirth, int telephoneNumber) {
+	Buyer(string lastName, short yearOfBirth, long long telephoneNumber) {
 
 
 		LastName = lastName;
@@ -75,9 +75,7 @@ public:
 		Address = "0";
 		AccountNumber = 0;
 	}
-	~Buyer() {
-		cout << "-";
-	}
+
 	
 
 };
